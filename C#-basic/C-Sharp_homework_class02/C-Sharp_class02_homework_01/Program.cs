@@ -8,16 +8,15 @@ namespace C_Sharp_homework_class02
         {
             // Task 01
             Console.WriteLine("Please enter the first number: ");
-            string num1 = Console.ReadLine();
-            
+            bool checkNum1 = double.TryParse(Console.ReadLine(), out double parsedNum1);
+
             Console.WriteLine("Please enter the second number: ");
-            string num2 = Console.ReadLine();
+            bool checkNum2 = double.TryParse(Console.ReadLine(), out double parsedNum2);
 
-            double parsedNum1 = 0;
-            double parsedNum2 = 0;
+            //double parsedNum1 = 0;
+            //double parsedNum2 = 0;
 
-            bool checkNum1 = double.TryParse(num1, out parsedNum1);
-            bool checkNum2 = double.TryParse(num2, out parsedNum2);
+                     
 
             Console.WriteLine("Please write the operator you want to use: + , - , / , * ");
             string operatorInput = Console.ReadLine();
@@ -58,9 +57,25 @@ namespace C_Sharp_homework_class02
                     Console.WriteLine("The result from dividing the two numbers is: " + divideResult);
                 }
             }
-            
-            
-            
+            Console.WriteLine("===========================================================");
+            Console.WriteLine("write a day of the week");
+            string inputDay = Console.ReadLine();
+
+            switch (inputDay)
+            {
+                case "monday":
+                    Console.WriteLine(inputDay + " is a working day");
+                    break;
+                case "wednesday":
+                    Console.WriteLine(inputDay + " is a working day");
+                    break;
+                case "saturday":
+                    Console.WriteLine("Today is " + inputDay + ". Hooray! The weekend has started!");
+                    break;
+                default:
+                    Console.WriteLine("The input is not of valid type");
+                    break;
+            }
             
             Console.ReadLine();
         }
