@@ -28,3 +28,10 @@ Please find example below:
   * After Swapping:
   * First Number: 8
   * Second Number: 5
+
+## Task 4:
+Write a program, where for a given number entered via the keyboard, it will print: 
+* "Tik" if divisible by 3, 
+* "Tak" if divisible by 5, 
+* "Tik - Tak" if divisible by 3 and 5. 
+* If the number is not divisible by 3 or 5, then print "Bad number".

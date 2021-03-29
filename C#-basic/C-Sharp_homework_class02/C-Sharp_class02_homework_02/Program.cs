@@ -39,7 +39,7 @@ namespace C_Sharp_class02_homework_02
                 }
                 if (!input4)
                 {
-                    Console.WriteLine("The fourt input is not of valid type. Please enter only numbers");
+                    Console.WriteLine("The fourth input is not of valid type. Please enter only numbers");
                 }
             }
 
