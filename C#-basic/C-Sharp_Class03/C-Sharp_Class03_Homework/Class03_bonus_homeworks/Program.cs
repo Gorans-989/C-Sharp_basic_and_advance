@@ -120,7 +120,6 @@ namespace Class03_bonus_homeworks
             }
             #endregion
 
-
             Console.ReadLine();
         }
     }
