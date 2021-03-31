@@ -99,6 +99,7 @@ namespace Class03_bonus_homeworks
             string inputNumber = Console.ReadLine();
             bool checkInput = int.TryParse(inputNumber, out int number);
             int multipliedResult = 1;
+            // mora da bide 1 bidejki so *= se mnozi levata strana so desnata.  
 
             if (checkInput)
             {
