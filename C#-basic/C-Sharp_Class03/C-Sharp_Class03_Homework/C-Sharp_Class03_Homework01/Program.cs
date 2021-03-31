@@ -14,9 +14,10 @@ namespace C_Sharp_Class03_Homework01
             {
                 Console.WriteLine("How many numbers you want in the array? type number: ");
                 inputLength = int.TryParse(Console.ReadLine(), out int lengthOfArray);
-
+                int[] numbersArray = new int[lengthOfArray];
+                
                 if (inputLength){
-                    int[] numbersArray = new int[lengthOfArray];
+
                     int result01 = 0;
                     int i = 0;
 

@@ -54,20 +54,16 @@ namespace Class03_exercises
             #endregion
 
             int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 10 };
-            
+            int[] reverseArray = new int[array.Length];
+            int counter2 = 0;
+
             for (int i = array.Length -1 ; i > -1 ; i--)
             {
-                int[] reverseArray = new int[array.Length];
-                int counter2 = 0;
                 reverseArray[counter2] = array[i];
                 Console.WriteLine("Reverse array is " + reverseArray[counter2]);
-                Console.WriteLine(reverseArray[0]);
+                counter2++;
             }
-
-            int[] someArray = new int[5];
-            someArray[0] = array[0];
-
-            Console.WriteLine(someArray[0] + "last cw line");
+            
             
 
             Console.ReadLine();
