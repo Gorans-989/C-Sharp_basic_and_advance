@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Sharp_Class03_Homework01", "C-Sharp_Class03_Homework01\C-Sharp_Class03_Homework01.csproj", "{9682DEE2-CC90-4BDC-9772-D114DBB069EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Sharp_Class03_Homework02", "C-Sharp_Class03_Homework02\C-Sharp_Class03_Homework02.csproj", "{86FBCB2D-BA4D-4A43-AB47-91421B98C799}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9682DEE2-CC90-4BDC-9772-D114DBB069EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9682DEE2-CC90-4BDC-9772-D114DBB069EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9682DEE2-CC90-4BDC-9772-D114DBB069EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9682DEE2-CC90-4BDC-9772-D114DBB069EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86FBCB2D-BA4D-4A43-AB47-91421B98C799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86FBCB2D-BA4D-4A43-AB47-91421B98C799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86FBCB2D-BA4D-4A43-AB47-91421B98C799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86FBCB2D-BA4D-4A43-AB47-91421B98C799}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD5CFC16-06A4-43EB-B0E9-DE6D4146302A}
+	EndGlobalSection
+EndGlobal
