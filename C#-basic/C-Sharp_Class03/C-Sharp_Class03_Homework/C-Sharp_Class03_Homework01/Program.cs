@@ -8,6 +8,8 @@ namespace C_Sharp_Class03_Homework01
         {
             #region Task01 SumOfSeven
             //Task 01 - Sum of Seven
+           /* Make a console application called SumOfEven. Inside it create an array of 6 integers.
+            Get numbers from the input, find and print the sum of the even numbers from the array:*/
             bool inputLength = false;
 
             while (!inputLength)

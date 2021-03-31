@@ -7,6 +7,11 @@ namespace C_Sharp_Class03_Homework02
         static void Main(string[] args)
         {
             // Task 02
+            /*## Task 2
+            * Make a new console application called StudentGroup
+            * Make 2 arrays called studentsG1 and studentsG2 and fill them with 5 student names. 
+            * Get a number from the console between 1 and 2 and print the students from that group in the console.
+                        */
             string[] studentGroup1 = { "goran", "zoran", "mile", "pero", "ace" };
             string[] studentGroup2 = { "maja", "ana", "sanja", "tina", "iva" };
 
