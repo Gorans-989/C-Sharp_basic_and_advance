@@ -12,7 +12,6 @@ namespace Class03_bonus_homeworks04
             */
             bool isValid = false;
 
-
             while (!isValid)
             {
                 Console.WriteLine("Welcome to Guess the number");
@@ -29,33 +28,60 @@ namespace Class03_bonus_homeworks04
                     Random rd = new Random();
                     int randomNumber = rd.Next(0, 100);
                     int counter = 1;
-
+                    Console.WriteLine(randomNumber);
 
                     while (counter <= 9)
                     {
-                        Console.WriteLine("Write a number between 0 - 100");
+                        Console.WriteLine($"Attempt: {counter} - Write a number between 0 - 100");
                         bool checkInput = int.TryParse(Console.ReadLine(), out int userNumber);
                         if(checkInput)
                         {
                             if(userNumber == randomNumber)
                             {
-                                Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
-                                    "The winnig number is: " + randomNumber + 
-                                    ". You entered the number: " + userNumber);
-                                Console.WriteLine("thanks for playing");
                                 if (counter == 1)
                                 {
                                     Console.WriteLine("Lucky guess. You won from the first try." + "Your number is: " +
                                         userNumber + ". The winning number is: " + randomNumber);
+
+                                    Console.WriteLine("Press 1 to restart or press any key to quit");
+                                    char choice = Convert.ToChar(Console.ReadLine());
+                                    if (choice == '1')
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        isValid = true;
+                                        break;
+                                    }
                                 }
-                                break;
+                                else
+                                {
+                                    Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
+                                    "The winnig number is: " + randomNumber +
+                                    ". You entered the number: " + userNumber);
+                                    Console.WriteLine("Thank you for playing");
+
+                                    Console.WriteLine("Press 1 to restart or press any key to quit");
+                                    char choice = Convert.ToChar(Console.ReadLine());
+                                    if (choice == '1')
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        isValid = true;
+                                        break;
+                                    }
+                                }
+                                
                             }
                             else if(userNumber > 0 && userNumber < 100)
                             {
                             
                                 if(randomNumber > userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + counter);
+                                    //Console.WriteLine("Try attempt number: " + counter);
                                     int x = 0;
                                     x = randomNumber - userNumber;
                                     if(x <= 5)
@@ -82,7 +108,7 @@ namespace Class03_bonus_homeworks04
                                 }
                                 if(randomNumber < userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + counter);
+                                    //Console.WriteLine("Try attempt number: " + counter);
                                     int x = 0;
                                     x = userNumber - randomNumber;
                                     if (x <= 5)
@@ -125,7 +151,7 @@ namespace Class03_bonus_homeworks04
                         }
                         else
                         {
-                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + counter);
+                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + ( 9 - counter ));
                         }
                         counter++;
                     }
@@ -141,29 +167,55 @@ namespace Class03_bonus_homeworks04
                     
                     while (counter <= 7)
                     {
-                        Console.WriteLine("Write a number between 0 - 500");
+                        Console.WriteLine($"Attempt: {counter} - Write a number between 0 - 500");
                         bool checkInput = int.TryParse(Console.ReadLine(), out int userNumber);
                         if (checkInput)
                         {
                             if (userNumber == randomNumber)
                             {
-                                Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
-                                    "The winning number is: " + randomNumber +
-                                    ". You entered the number: " + userNumber);
-                                Console.WriteLine("thanks for playing");
                                 if (counter == 1)
                                 {
                                     Console.WriteLine("Lucky guess. You won from the first try." + "Your number is: " +
                                         userNumber + ". The winning number is: " + randomNumber);
+
+                                    Console.WriteLine("Press 1 to restart or press any key to quit");
+
+                                    char choice = Convert.ToChar(Console.ReadLine());
+                                    if (choice == '1')
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        isValid = true;
+                                        break;
+                                    }
                                 }
-                                break;
+                                else { 
+                                    Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
+                                        "The winning number is: " + randomNumber +
+                                        ". You entered the number: " + userNumber);
+                                    Console.WriteLine("thanks for playing");
+
+                                    Console.WriteLine("Press 1 to restart or press any key to quit");
+                                    char choice = Convert.ToChar(Console.ReadLine());
+                                    if (choice == '1')
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        isValid = true;
+                                        break;
+                                    }
+                                }
                             }
                             else if (userNumber > 0 && userNumber < 500)
                             {
 
                                 if (randomNumber > userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + (counter + 1));
+                                    //Console.WriteLine("Try attempt number: " + (counter + 1));
                                     int x = 0;
                                     x = randomNumber - userNumber;
                                     if (x <= 5)
@@ -190,7 +242,7 @@ namespace Class03_bonus_homeworks04
                                 }
                                 if (randomNumber < userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + (counter +1));
+                                   // Console.WriteLine("Try attempt number: " + (counter +1));
                                     int x = 0;
                                     x = userNumber - randomNumber;
                                     if (x <= 5)
@@ -226,15 +278,20 @@ namespace Class03_bonus_homeworks04
                                 Console.WriteLine("Press 1 to restart or press any key to quit");
 
                                 char choice = Convert.ToChar(Console.ReadLine());
-                                if (choice != '1')
+                                if (choice == '1')
+                                {
+                                    break;
+                                }
+                                else
                                 {
                                     isValid = true;
+                                    break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + counter);
+                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + ( 9 - counter));
                         }
                         counter++;
                     }
@@ -249,29 +306,46 @@ namespace Class03_bonus_homeworks04
                     int counter = 1;
                     while (counter <= 5)
                     {
-                        Console.WriteLine("Write a number between 0 - 1000");
+                        Console.WriteLine($"Attempt: {counter} - Write a number between 0 - 1000");
                         bool checkInput = int.TryParse(Console.ReadLine(), out int userNumber);
                         if (checkInput)
                         {
                             if (userNumber == randomNumber)
                             {
-                                Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
-                                    "The winnig number is: " + randomNumber +
-                                    ". You entered the number: " + userNumber);
-                                Console.WriteLine("thanks for playing");
                                 if (counter == 1)
                                 {
                                     Console.WriteLine("Lucky guess. You won from the first try." + "Your number is: " +
                                         userNumber + ". The winning number is: " + randomNumber);
+                                    Console.WriteLine("Thanks for playing");
+
+                                    Console.WriteLine("Press 1 to restart or press any key to quit");
+                                    char choice = Convert.ToChar(Console.ReadLine());
+                                    if (choice == '1')
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        isValid = true;
+                                        break;
+                                    }
                                 }
-                                break;
+                                else
+                                { 
+                                    Console.WriteLine("Congratulations you WON!! on your " + counter + " attempt. " +
+                                        "The winnig number is: " + randomNumber +
+                                        ". You entered the number: " + userNumber);
+                                    Console.WriteLine("thanks for playing");
+                                    isValid = true;
+                                    break;
+                                }
                             }
                             else if (userNumber > 0 && userNumber < 1000)
                             {
 
                                 if (randomNumber > userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + counter);
+                                    //Console.WriteLine("Try attempt number: " + counter);
                                     int x = 0;
                                     x = randomNumber - userNumber;
                                     if (x <= 5)
@@ -298,7 +372,7 @@ namespace Class03_bonus_homeworks04
                                 }
                                 if (randomNumber < userNumber)
                                 {
-                                    Console.WriteLine("Try attempt number: " + counter);
+                                    //Console.WriteLine("Try attempt number: " + counter);
                                     int x = 0;
                                     x = userNumber - randomNumber;
                                     if (x <= 5)
@@ -342,7 +416,7 @@ namespace Class03_bonus_homeworks04
                         }
                         else
                         {
-                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + counter);
+                            Console.WriteLine("Wrong input. Please type only number. Attempts left: " + ( 9 - counter));
                         }
                         counter++;
                     }
@@ -352,6 +426,11 @@ namespace Class03_bonus_homeworks04
                 else 
                 {
                     Console.WriteLine("wrong input. Only type Easy / Normal / Hard");
+                    Console.WriteLine("Press any key to continue or type 'q' to quit");
+                    string inputQ = (Console.ReadLine());
+                    if(inputQ.ToLower() == "q") {
+                        isValid = true;
+                    }
                 }
 
             }
