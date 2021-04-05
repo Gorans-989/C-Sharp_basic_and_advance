@@ -6,6 +6,10 @@ namespace C_Sharp_Class05_intro
     {
         static void Main(string[] args)
         {
+            //write methods in class Program
+            //if the method returns a variable use the type 'string / int or .....' . Else if method doesnt return a variable use void
+            // static string Substring ( string x, int y ) // static void Substring ( string x, int y ) 
+
             #region String format
             /*
             string firstName = "Goran";
