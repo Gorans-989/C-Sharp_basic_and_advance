@@ -59,7 +59,8 @@ namespace C_Sharp_Class05_intro
 
             #region indexOF length ToCharArray
             /*
-            // .Length gives the length of the string. it return a number (int), which we can use vo math operations
+            // .Length gives the length of the string. it return a number (int), which we can use in math operations
+
             string demo = "Hello there g3";
             int numberOfCharachters = demo.Length;
             Console.WriteLine($"{demo}" + " " + $"The length is {demo.Length}");
@@ -143,6 +144,59 @@ namespace C_Sharp_Class05_intro
             Console.WriteLine($"get the year only : {onlyYear}");
             Console.WriteLine($"get the month only : {onlyMonth}");
             */
+            #endregion
+
+
+            #region example exercise
+            /*
+            string str1;
+            char[] arr1;
+            int length, i;
+            length = 0;
+            char ch;
+            Console.Write("Enter the string : ");
+            str1 = Console.ReadLine();
+            length = str1.Length;
+            arr1 = str1.ToCharArray(0, length); // Converts string into char array.
+
+            Console.Write("\nAfter conversion, the string is: ");
+            for (i = 0; i < length; i++)
+            {
+                ch = arr1[i];
+                if (Char.IsLower(ch)) // check whether the character is lowercase
+                    Console.Write(Char.ToUpper(ch)); // Converts lowercase character to uppercase.
+                else
+                    Console.Write(Char.ToLower(ch)); // Converts uppercase character to lowercase.
+            }
+            */
+            /*
+            string str1;
+            string findstring;
+            int start = 0;
+            int counter = -1;
+            int index = -1;
+
+            Console.Write("\n\nFind the number of times a specific string appears in a string :\n");
+            Console.Write("--------------------------------------------------------------------\n");
+
+            Console.Write("Input the original string : ");
+            str1 = Console.ReadLine();
+            Console.Write("Input the string to be searched for : ");
+            findstring = Console.ReadLine();
+
+
+            while (start != -1)
+            {
+                start = str1.IndexOf(findstring, index + 1);
+                Console.WriteLine(start);
+                counter += 1;
+                index = start;
+            }
+            Console.Write("The string '{0}' occurs " + counter + " times.\n", findstring);
+        
+
+            */
+
             #endregion
 
             Console.ReadLine();
