@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Class07_Inheritance_class_code01_domain\Class07_Inheritance_class_code01_domain.csproj" />
+    <ProjectReference Include="..\Class07_Inheritance_class_code_Services\Class07_Inheritance_class_code_Services.csproj" />
+  </ItemGroup>
+
+</Project>

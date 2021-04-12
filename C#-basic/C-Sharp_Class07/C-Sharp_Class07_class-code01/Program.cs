@@ -7,6 +7,8 @@ namespace C_Sharp_Class07_class_code01
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Console.ReadLine();
         }
     }
 }
