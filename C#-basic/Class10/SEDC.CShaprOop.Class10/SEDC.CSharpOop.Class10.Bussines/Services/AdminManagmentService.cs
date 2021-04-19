@@ -25,7 +25,7 @@ namespace SEDC.CSharpOop.Class10.Bussines.Services
                 
                 try
                 {
-                    //CheckSelection(selection);
+                    
                     Console.WriteLine($"{selection}");
 
 

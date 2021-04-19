@@ -20,7 +20,7 @@ namespace Class08_Exercise2_Domain
         public int Age { get; set; }
         Genre FavoriteMusicType { get; set; }
 
-        public List<Song> FavoriteSongs { get; set; }
+        public List<Song> FavoriteSongs { get; set; } = new List<Song>();
 
         public string FullName()
         {
@@ -28,22 +28,20 @@ namespace Class08_Exercise2_Domain
         }
         public void GetFavoriteSongs()
         {
-            if(FavoriteSongs.Count == 0)
+
+
+            if (FavoriteSongs.Count > 0)
             {
-                Console.WriteLine($"This person {FullName()} hates music." +
-                    $" There are no favourite songs in their list");
-            }
-            else
-            {
-                foreach(var item in FavoriteSongs)
+                foreach (var item in FavoriteSongs)
                 {
                     Console.WriteLine($"{item.Title}");
                 }
             }
-
-
-
-
+            else
+            {
+                Console.WriteLine($"This person {FullName()} hates music." +
+                    $" There are no favourite songs in their list");
+            }
         }
     }
 }
