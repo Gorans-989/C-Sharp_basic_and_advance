@@ -116,6 +116,42 @@ namespace LINQ.Homework
             double smt111 = albumWithTheMostSongs.Songs.Select(x => x.Duration).Average();
             Console.WriteLine($"average song duration, of the album that has most songs {smt111}");
 
+
+            Console.WriteLine("  ***** Bonus round start ***** ");
+            // Bonus:
+            // - print the longest song duration of the album that has least songs
+            Album albumWithLeastSongs = Albums.Where(album => album.Songs.Count() ==
+            Albums.Select(x => x.Songs.Count()).Min()).FirstOrDefault();
+
+            int longestSongDurationOfAlbumWithLeastSongs = albumWithLeastSongs.Songs.Select(x => x.Duration).Max();
+            Console.WriteLine($"print the longest song duration of the album that has least songs:" +
+                $" {longestSongDurationOfAlbumWithLeastSongs} and the name is {albumWithLeastSongs.Name}");
+
+
+            // - print the name of the album that has most songs that contain letter 'a' in the name
+            Console.WriteLine("======================================");
+            List<Song> songsThatContainA = Songs.Where(x => x.Name.ToLower().Contains("a")).ToList();
+            var groupedSongs = songsThatContainA.GroupBy(x => x.AlbumId);
+            Dictionary<int, List<Song>> groupedSongsDictionary = new Dictionary<int, List<Song>>();
+            foreach (var item in groupedSongs)
+            {
+                groupedSongsDictionary.Add(item.Key, item.ToList());
+            }
+            // checking values
+            //foreach(KeyValuePair<int, List<Song>> item in groupedSongsDictionary)
+            //{
+            //    Console.WriteLine($"{item.Key} With value {item.Value.Count()}");
+            //}
+
+            int maxValueOfDictionary = groupedSongsDictionary.Select(x => x.Value.Count()).Max();
+            int albumIdWithMostSongContaininga = groupedSongsDictionary.Where(x => x.Value.Count() == maxValueOfDictionary)
+                .Select(y => y.Key).FirstOrDefault();
+
+            //Console.WriteLine(albumIdWithMostSongContaininga);
+            string NameOfAlbumWithMostSongsContainingA = Albums.FirstOrDefault(x => x.Id == albumIdWithMostSongContaininga).Name;
+            Console.WriteLine($"print the name of the album that has most songs that contain letter 'a' in the name" +
+                $"\n{NameOfAlbumWithMostSongsContainingA}");
+
             #endregion
             Console.WriteLine("============================== DO Tuka znam ==========================");
 
@@ -127,11 +163,10 @@ namespace LINQ.Homework
             albumsWithMoreThanOnePopRockSong.ForEach(x => Console.WriteLine($"{x.Name} and the arthist id is : {x.ArtistId}"));
             var groupedAlbumsByGenre = albumsWithMoreThanOnePopRockSong.OrderBy(y => y.ArtistId).GroupBy(x => x.ArtistId);
 
-            // neznam
+            
 
 
             // - print the name of the album that has highest Average duration of a song
-
             var songsGroupedByAlbumId = Songs.GroupBy(x => x.AlbumId);
             Dictionary<int, double> albumsByIdWithAverageDuration = new Dictionary<int, double>();
             foreach(var item in songsGroupedByAlbumId)
@@ -144,16 +179,14 @@ namespace LINQ.Homework
             //now to get the last key as an int (because of the order the last one has highestDuration)
             Console.WriteLine(orderedDictionary.Count());
 
-            
-            
-
             //double albumIDwithHighestAverageDuration = orderedDictionary.LastOrDefault(x => x.Value);
-
-
             foreach (var item in orderedDictionary)
             {
                 Console.WriteLine($"{item.Key} and the value is {item.Value}");
             }
+
+
+
 
             // - print the name of the artist that has most songs
             var groupAlbumsByArtistId = Albums.GroupBy(x => x.ArtistId).ToList();
@@ -171,6 +204,9 @@ namespace LINQ.Homework
             }
             Console.WriteLine(groupAlbumsByArtistIdDictionary[1]);
 
+
+
+
             // - print the type of the artist(SoloArtist/Band) that has most albums published before year 2000
             List<Album> albumsPublishedBefore2000 = Albums.Where(x => x.Year < 2000).ToList();
             var groupByArtistID = Albums.Where(album => album.Year < 2000).GroupBy(x => x.ArtistId).ToList();
@@ -186,6 +222,9 @@ namespace LINQ.Homework
                 Console.WriteLine($"The key / id is : {item.Key} , the value is :{item.Value.Count()} ");
             }
             */
+
+
+
 
             /* from bonus
             // - print the name of the artist that has most songs that end with letter 'd'
@@ -223,65 +262,12 @@ namespace LINQ.Homework
 
             #endregion
 
-
-            #region ToSolveNext
-            Console.WriteLine("*****Bonus round start*****");
-            // Bonus:
-            // - print the longest song duration of the album that has least songs
-            Album albumWithLeastSongs = Albums.Where(album => album.Songs.Count() ==
-            Albums.Select(x => x.Songs.Count()).Min()).FirstOrDefault();
-
-            int longestSongDurationOfAlbumWithLeastSongs = albumWithLeastSongs.Songs.Select(x => x.Duration).Max();
-            Console.WriteLine($"print the longest song duration of the album that has least songs:" +
-                $" {longestSongDurationOfAlbumWithLeastSongs} and the name is {albumWithLeastSongs.Name}");
-
-
-            // - print the name of the album that has most songs that contain letter 'a' in the name
-            Console.WriteLine("======================================");
-            List<Song> songsThatContainA = Songs.Where(x => x.Name.ToLower().Contains("a")).ToList();
-            var groupedSongs = songsThatContainA.GroupBy(x => x.AlbumId);
-            Dictionary<int, List<Song>> groupedSongsDictionary = new Dictionary<int, List<Song>>();
-            foreach(var item in groupedSongs)
-            {
-                groupedSongsDictionary.Add(item.Key, item.ToList());
-            }
-            // checking values
-            //foreach(KeyValuePair<int, List<Song>> item in groupedSongsDictionary)
-            //{
-            //    Console.WriteLine($"{item.Key} With value {item.Value.Count()}");
-            //}
-
-            int maxValueOfDictionary = groupedSongsDictionary.Select(x => x.Value.Count()).Max();
-            int albumIdWithMostSongContaininga = groupedSongsDictionary.Where(x => x.Value.Count() == maxValueOfDictionary)
-                .Select(y => y.Key).FirstOrDefault();
-
-            //Console.WriteLine(albumIdWithMostSongContaininga);
-            string NameOfAlbumWithMostSongsContainingA = Albums.FirstOrDefault(x => x.Id == albumIdWithMostSongContaininga).Name;
-            Console.WriteLine($"print the name of the album that has most songs that contain letter 'a' in the name" +
-                $"\n{NameOfAlbumWithMostSongsContainingA}");
-
-
-
-
-            
-
-
-            #endregion
-
-
             // ************ Don't mind the structure, focus on the lists declared on the beginning of Program.cs ****************
 
             // 3, 2, 1.... GO! :)
 
-
-
-
-
-
-
             Console.ReadLine();
         }
-
 
 
         #region Data Initialization
