@@ -10,15 +10,31 @@ namespace SEDC.CSharpOop.Class10.Domain
         public static List<Admin> Admins { get; set; }
         public static List<Trainer> Trainers { get; set; }
         public static List<Student> Students { get; set; }
+        public static List<Subject> Subjects { get; set; }
+        
+        
 
         static InMemoryDatabase()
         {
             Admins = GenerateAdmins();
             Trainers = GenerateTrainers();
             Students = GenerateStudents();
+            Subjects = GenerateSubjects();
+            //asignSubjectsToStudents();
         }
+        //private static void asignSubjectsToStudents()
+        //{
+        //    foreach (Student item in Students)
+        //    {
+        //        item.Subjects.Add(Subjects[0]);
+        //        item.Subjects.Add(Subjects[1]);
+        //    }
 
-        private static List<Student> GenerateStudents()
+        // System.NullReferenceException: 'Object reference not set to an instance of an object.'
+        //SEDC.CSharpOop.Class10.Domain.Models.Student.Subjects.get returned null.
+
+        //}
+        private static List<Subject> GenerateSubjects()
         {
             List<Subject> subjects = new List<Subject>
             {
@@ -54,15 +70,35 @@ namespace SEDC.CSharpOop.Class10.Domain
                     StartOn =  new DateTime(2020, 12, 01)},
             };
 
+            return subjects;
+        }
+
+        private static List<Student> GenerateStudents()
+        {
+            
+
             List<Student> listOfStudents = new List<Student>
             {
-                new Student(1, "Andjela", "Mitkova", "andmit@mail.com", "123asd") { Subjects = new List<Subject> { subjects[0], subjects[1], subjects[4] } },
-                new Student(2, "Angel", "Jordanovski", "andjor@mail.com", "123asd") { Subjects = new List<Subject> { subjects[1], subjects[0], subjects[2] } },
-                new Student(3, "Biljana", "Radevska", "bilrad@mail.com", "123asd") { Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
-                new Student(4, "Filip", "Belevski", "filbel@mail.com", "123asd") { Subjects = new List<Subject> { subjects[3], subjects[4], subjects[1] } },
-                new Student(5, "Goran", "Stojanovski", "gorsto@mail.com", "123asd") { Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
-                new Student(6, "Igor", "Tarchugovski", "igotar@mail.com", "123asd") { Subjects = new List<Subject> { subjects[1], subjects[3], subjects[4] } },
-                new Student(7, "Kristina", "Lazarovska", "krilar@mail.com", "123asd") { Subjects = new List<Subject> { subjects[2], subjects[3], subjects[1] } },
+                new Student(1, "Andjela", "Mitkova", "andmit@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[0], subjects[1], subjects[4] } },
+
+                new Student(2, "Angel", "Jordanovski", "andjor@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[1], subjects[0], subjects[2] } },
+
+                new Student(3, "Biljana", "Radevska", "bilrad@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
+
+                new Student(4, "Filip", "Belevski", "filbel@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[3], subjects[4], subjects[1] } },
+
+                new Student(5, "Goran", "Stojanovski", "gorsto@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
+
+                new Student(6, "Igor", "Tarchugovski", "igotar@mail.com", "123asd"),
+                //{ Subjects = new List<Subject> { subjects[1], subjects[3], subjects[4] } },
+
+                new Student(7, "Kristina", "Lazarovska", "krilar@mail.com", "123asd")
+                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[1] } },
             };
 
             return listOfStudents;
@@ -83,10 +119,12 @@ namespace SEDC.CSharpOop.Class10.Domain
         {
             List<Admin> listOfAdmins = new List<Admin>
             {
-                new Admin(1, "admin", "admin", "admin@mail.com", "123asd")
+                new Admin(1, "admin", "admin", "admin@mail.com", "123asd"),
+                new Admin(2,"admin2", "admin2", "admin2@mail.com", "123asd")
             };
 
             return listOfAdmins;
         }
+
     }
 }

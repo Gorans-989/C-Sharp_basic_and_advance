@@ -19,22 +19,35 @@ namespace SEDC.CSharpOop.Class10.AcademyManagementApp
             {
                 while (userResult.IsLoggedIn)
                 {
+                    
                     AdminMenu();
                     // parse console inputt
                     bool isValid = int.TryParse(Console.ReadLine(), out int selectiion);
                     if(isValid != false)
                     {
-                        adminManagmentService.AddNewUser(selectiion);
-
+                        if(selectiion == 7)
+                        {
+                            userResult.IsLoggedIn = false;
+                            Console.WriteLine("GoodBye Admin");
+                        }
+                        else
+                        {
+                            adminManagmentService.AddOrRemoveUser(selectiion, userResult.Admin.Email);
+                        }
                     }
-
-                    
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong input. Please Try again");
+                        Console.ResetColor();
+                    }
                 }
             }
             else if(userResult.Student != null)
             {
                 while (userResult.IsLoggedIn)
                 {
+                    
                     // doSomething
                 }
             }
@@ -61,11 +74,12 @@ namespace SEDC.CSharpOop.Class10.AcademyManagementApp
         {
             Console.WriteLine("This is admin menu");
             Console.WriteLine("1. Add new Admin");
-            Console.WriteLine("2. Remove Admin");
+            Console.WriteLine("2. Remove existing Admin");
             Console.WriteLine("3. Add new Student");
             Console.WriteLine("4. Remove existing Student");
             Console.WriteLine("5. Add new Trainer");
-            Console.WriteLine("6. Remove new Trainer");
+            Console.WriteLine("6. Remove existing Trainer");
+            Console.WriteLine("7. To Exit press \"7\"");
         }
         
     }

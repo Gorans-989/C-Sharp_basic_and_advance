@@ -26,14 +26,61 @@ namespace SEDC.CSharpOop.Class10.Domain.Data
             return trainer;
         }
 
+        
         public void AddAdmin (Admin newAdmin)
         {
             InMemoryDatabase.Admins.Add(newAdmin);
+            Console.WriteLine("Admin Created.");
         }
-
         public void AddStudent(Student newStudent)
         {
             InMemoryDatabase.Students.Add(newStudent);
+            Console.WriteLine("Student Created.");
+        }
+        public void AddTrainer(Trainer newTrainer)
+        {
+            InMemoryDatabase.Trainers.Add(newTrainer);
+            Console.WriteLine("Trainer Created.");
+        }
+
+        public void RemoveAdmin(Admin admin)
+        {
+            if (InMemoryDatabase.Admins.Remove(admin))
+            {
+
+                Console.WriteLine($"Admin {admin.FirstName} was removed from Database");
+            }
+            else
+            {
+                throw new Exception("Something went wrong. Please try again");
+            }
+
+        }
+        public void RemoveStudent(Student student)
+        {
+            if (InMemoryDatabase.Students.Remove(student))
+            {
+
+                Console.WriteLine($"Student {student.FirstName} was removed from Database");
+            }
+            else
+            {
+                throw new Exception("Something went wrong. Please try again");
+            }
+            
+        }
+        public void RemoveTrainer(Trainer trainer)
+        {
+            if (InMemoryDatabase.Trainers.Remove(trainer))
+            {
+
+                Console.WriteLine($"Trainer {trainer.FirstName} was removed from Database");
+            }
+            else
+            {
+                throw new Exception("Something went wrong. Please try again");
+            }
+
         }
 
         public int GetLengthOfAdmins()
@@ -52,17 +99,27 @@ namespace SEDC.CSharpOop.Class10.Domain.Data
             return numb;
         }
 
-        public void ListOFSubjects()
+        public void ListOfAdmins()
         {
-            List<Student> students = InMemoryDatabase.Students;
-
-            foreach(var item in students)
+            foreach(var item in InMemoryDatabase.Admins)
             {
-                if(item.Subjects != null)
-                {
-                    Console.WriteLine($"{item.Subjects.Select(x=> x.Name != null)}");
-                }
+                Console.WriteLine(item.Email);
+            } 
+        }
+        public void ListOfTrainers()
+        {
+            foreach (var item in InMemoryDatabase.Trainers)
+            {
+                Console.WriteLine(item.Email);
             }
         }
+        public void ListOfStudents()
+        {
+            foreach (var item in InMemoryDatabase.Students)
+            {
+                Console.WriteLine(item.Email);
+            }
+        }
+
     }
 }
