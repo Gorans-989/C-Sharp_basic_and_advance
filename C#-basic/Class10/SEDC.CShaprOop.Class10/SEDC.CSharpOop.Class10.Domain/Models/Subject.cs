@@ -11,5 +11,6 @@ namespace SEDC.CSharpOop.Class10.Domain.Models
         public bool IsOptional { get; set; }
         public DateTime StartOn { get; set; }
         public DateTime EndOn { get; set; }
+        public List<string> StudentsAttending { get; set; } = new List<string>();
     }
 }

@@ -13,7 +13,7 @@ namespace SEDC.CSharpOop.Class10.Domain.Models
         public Student(int id, string fname, string lname, string email, string password)
             : base(id, fname, lname, email, password, Role.Student)
         {
-            
+            Grades = new Dictionary<string, int>();
         }
 
         public Dictionary<string, int> GetGrades()
@@ -23,7 +23,7 @@ namespace SEDC.CSharpOop.Class10.Domain.Models
 
         public void AddGrade(string subject, int grade)
         {
-           // Grades.Add(subject, grade);
+            Grades.Add(subject, grade);
         }
     }
 }

@@ -25,7 +25,11 @@ namespace SEDC.CSharpOop.Class10.Domain.Data
             Trainer trainer = InMemoryDatabase.Trainers.FirstOrDefault(trainer => trainer.Email == email);
             return trainer;
         }
-
+        public Student GetStudentByFirstName(string firstName)
+        {
+            Student student = InMemoryDatabase.Students.FirstOrDefault(student => student.FirstName.ToLower() == firstName.ToLower());
+            return student;
+        }
         
         public void AddAdmin (Admin newAdmin)
         {
@@ -118,6 +122,13 @@ namespace SEDC.CSharpOop.Class10.Domain.Data
             foreach (var item in InMemoryDatabase.Students)
             {
                 Console.WriteLine(item.Email);
+            }
+        }
+        public void DisplayStudentsNames()
+        {
+            foreach(Student student in InMemoryDatabase.Students)
+            {
+                Console.WriteLine(student.FirstName);
             }
         }
 

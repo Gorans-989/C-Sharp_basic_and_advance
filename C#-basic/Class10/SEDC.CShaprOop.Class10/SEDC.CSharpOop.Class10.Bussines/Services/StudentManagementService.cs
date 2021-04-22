@@ -17,8 +17,15 @@ namespace SEDC.CSharpOop.Class10.Bussines.Services
             SubjectRepo = new SubjectRepo();
         }
 
-
-
+        public void DisplaySubjectAndGrades(Student student)
+        {
+            SubjectRepo.listOfStudentSubjectsAndGrades(student);
+        }
+        public bool StudentExit()
+        {
+            Console.WriteLine("Press Enter to exit");
+            return false;
+        }
 
 
     }

@@ -10,13 +10,16 @@ namespace SEDC.CSharpOop.Class10.AcademyManagementApp
         {
             UserManagmentService userManagmentService = new UserManagmentService();
             AdminManagmentService adminManagmentService = new AdminManagmentService();
+            StudentManagementService studentManagementService = new StudentManagementService();
+            TrainerManagementService trainerManagementService = new TrainerManagementService();
 
             UserResult userResult = userManagmentService.Login();
 
-            Console.WriteLine($"Welcome User");
+            
           
             if(userResult.Admin != null)
             {
+                Console.WriteLine($"Welcome Admin : {userResult.Admin.FirstName}");
                 while (userResult.IsLoggedIn)
                 {
                     
@@ -47,15 +50,49 @@ namespace SEDC.CSharpOop.Class10.AcademyManagementApp
             {
                 while (userResult.IsLoggedIn)
                 {
-                    
+                    Console.WriteLine($"Welcome Student: {userResult.Student.FirstName}");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    studentManagementService.DisplaySubjectAndGrades(userResult.Student);
+                    userResult.IsLoggedIn = studentManagementService.StudentExit();
                     // doSomething
                 }
             }
             else if(userResult.Trainer != null)
             {
+                Console.WriteLine($"Welcome Trainer : {userResult.Trainer.FirstName}");
                 while (userResult.IsLoggedIn)
                 {
-                    // doSomething
+                    TrainerMenu();
+
+                    bool isValid = int.TryParse(Console.ReadLine(), out int selection);
+                    if(isValid != false)
+                    {   
+                        if(selection == 3)
+                        {
+                            Console.WriteLine($"Goodbye Trainer {userResult.Trainer.FirstName}");
+                            userResult.IsLoggedIn = false;
+                            //return;
+                        }
+                        else if(selection != 1 && selection != 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Wrong input. Please Try again");
+                            Console.ResetColor();
+                        }
+                        
+                        else
+                        {
+                            trainerManagementService.TrainerFunctions(selection);
+                            // trainer management service
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Wrong input. Please Try again");
+                        Console.ResetColor();
+                    }
                 }
             }
             else
@@ -80,6 +117,13 @@ namespace SEDC.CSharpOop.Class10.AcademyManagementApp
             Console.WriteLine("5. Add new Trainer");
             Console.WriteLine("6. Remove existing Trainer");
             Console.WriteLine("7. To Exit press \"7\"");
+        }
+        public static void TrainerMenu()
+        {
+            Console.WriteLine("This is trainer menu");
+            Console.WriteLine("1. Press 1 to see all Students");
+            Console.WriteLine("2. Press 2 to see all Subjects");
+            Console.WriteLine("3. Press 3 to exit");
         }
         
     }

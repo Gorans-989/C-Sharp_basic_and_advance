@@ -16,10 +16,10 @@ namespace SEDC.CSharpOop.Class10.Domain
 
         static InMemoryDatabase()
         {
-            Admins = GenerateAdmins();
-            Trainers = GenerateTrainers();
-            Students = GenerateStudents();
-            Subjects = GenerateSubjects();
+            GenerateAdmins();
+            GenerateTrainers();
+            GenerateStudentsAndSubjects();
+            
             //asignSubjectsToStudents();
         }
         //private static void asignSubjectsToStudents()
@@ -34,9 +34,10 @@ namespace SEDC.CSharpOop.Class10.Domain
         //SEDC.CSharpOop.Class10.Domain.Models.Student.Subjects.get returned null.
 
         //}
-        private static List<Subject> GenerateSubjects()
+        
+        private static void GenerateStudentsAndSubjects()
         {
-            List<Subject> subjects = new List<Subject>
+            Subjects = new List<Subject>
             {
                 new Subject() { Name = "c# basic",
                     IsOptional = false,
@@ -70,60 +71,59 @@ namespace SEDC.CSharpOop.Class10.Domain
                     StartOn =  new DateTime(2020, 12, 01)},
             };
 
-            return subjects;
-        }
 
-        private static List<Student> GenerateStudents()
-        {
-            
-
-            List<Student> listOfStudents = new List<Student>
+            Students = new List<Student>
             {
-                new Student(1, "Andjela", "Mitkova", "andmit@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[0], subjects[1], subjects[4] } },
+                new Student(1, "Andjela", "Mitkova", "andmit@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[0], Subjects[1], Subjects[4] } },
 
-                new Student(2, "Angel", "Jordanovski", "andjor@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[1], subjects[0], subjects[2] } },
+                new Student(2, "Angel", "Jordanovski", "andjor@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[1], Subjects[0], Subjects[2] } },
 
-                new Student(3, "Biljana", "Radevska", "bilrad@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
+                new Student(3, "Biljana", "Radevska", "bilrad@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[2], Subjects[3], Subjects[4] } },
 
-                new Student(4, "Filip", "Belevski", "filbel@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[3], subjects[4], subjects[1] } },
+                new Student(4, "Filip", "Belevski", "filbel@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[3], Subjects[4], Subjects[1] } },
 
-                new Student(5, "Goran", "Stojanovski", "gorsto@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[4] } },
+                new Student(5, "Goran", "Stojanovski", "gorsto@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[4], Subjects[3], Subjects[2] } },
 
-                new Student(6, "Igor", "Tarchugovski", "igotar@mail.com", "123asd"),
-                //{ Subjects = new List<Subject> { subjects[1], subjects[3], subjects[4] } },
+                new Student(6, "Igor", "Tarchugovski", "igotar@mail.com", "123asd")
+                { Subjects = new List<Subject> { Subjects[1], Subjects[3], Subjects[4] } },
 
                 new Student(7, "Kristina", "Lazarovska", "krilar@mail.com", "123asd")
-                //{ Subjects = new List<Subject> { subjects[2], subjects[3], subjects[1] } },
+                { Subjects = new List<Subject> { Subjects[2], Subjects[3], Subjects[1] } }
             };
 
-            return listOfStudents;
-        }
 
-        private static List<Trainer> GenerateTrainers()
-        {
-            List<Trainer> listOfTrainer = new List<Trainer>
+            Random randomNumber = new Random();
+
+            //Students[0].AddGrade(Students[0].Subjects[0].Name, 8);
+            foreach (Student item in Students)
             {
-                new Trainer(1, "Trajan", "Stevkovski", "traste@mail.com", "123asd"),
-                new Trainer(2, "Damjan", "Stojanovski", "damsto@mail.com", "123asd"),
-            };
+                foreach (Subject element in item.Subjects)
+                {
+                    item.AddGrade(element.Name, randomNumber.Next(6, 11));
+                }
+            }
 
-            return listOfTrainer;
         }
 
-        private static List<Admin> GenerateAdmins()
+        private static void GenerateTrainers()
         {
-            List<Admin> listOfAdmins = new List<Admin>
+                Trainers = new List<Trainer>();
+                Trainers.Add(new Trainer(1, "Trajan", "Stevkovski", "traste@mail.com", "123asd"));
+                Trainers.Add(new Trainer(2, "Damjan", "Stojanovski", "damsto@mail.com", "123asd"));
+        }
+
+        private static void GenerateAdmins()
+        {
+            Admins= new List<Admin>
             {
                 new Admin(1, "admin", "admin", "admin@mail.com", "123asd"),
                 new Admin(2,"admin2", "admin2", "admin2@mail.com", "123asd")
             };
-
-            return listOfAdmins;
         }
 
     }
