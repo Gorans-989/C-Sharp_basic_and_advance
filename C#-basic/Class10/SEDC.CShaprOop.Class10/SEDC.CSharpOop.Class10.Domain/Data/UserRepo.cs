@@ -8,6 +8,7 @@ namespace SEDC.CSharpOop.Class10.Domain.Data
 {
     public class UserRepo
     {
+        
         public Admin GetAdminByEmail(string email)
         {
             Admin admin = InMemoryDatabase.Admins.FirstOrDefault(admin => admin.Email == email);
