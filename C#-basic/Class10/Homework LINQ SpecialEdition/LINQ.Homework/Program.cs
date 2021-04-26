@@ -99,15 +99,15 @@ namespace LINQ.Homework
             //}
 
             //Short Way
-            Song shortestDuration = Songs.Where(x => x.Duration == Songs.Select(song => song.Duration).Min()).FirstOrDefault();
+            Song shortestDuration = Songs.FirstOrDefault(x => x.Duration == Songs.Select(song => song.Duration).Min());
             Console.WriteLine($"how many characters has the song that has the shortest Duration - {shortestDuration.Name.Length}");
             
 
             // - print the name and the genre of the album that has most songs
             Console.WriteLine("========================================");
             // songsGroupedByAlbumId songs grouped by album id
-            Album albumWithTheMostSongs = Albums.Where(album => album.Songs.Count() ==
-            Albums.Select(x => x.Songs.Count()).Max()).FirstOrDefault();
+            Album albumWithTheMostSongs = Albums.FirstOrDefault(album => album.Songs.Count() ==
+            Albums.Select(x => x.Songs.Count()).Max());
             Console.WriteLine($"The name of the albums with most songs is : {albumWithTheMostSongs.Name}" +
                 $" and the genre is: {albumWithTheMostSongs.Genre}");
 
@@ -120,8 +120,8 @@ namespace LINQ.Homework
             Console.WriteLine("  ***** Bonus round start ***** ");
             // Bonus:
             // - print the longest song duration of the album that has least songs
-            Album albumWithLeastSongs = Albums.Where(album => album.Songs.Count() ==
-            Albums.Select(x => x.Songs.Count()).Min()).FirstOrDefault();
+            Album albumWithLeastSongs = Albums.FirstOrDefault(album => album.Songs.Count() ==
+            Albums.Select(x => x.Songs.Count()).Min());
 
             int longestSongDurationOfAlbumWithLeastSongs = albumWithLeastSongs.Songs.Select(x => x.Duration).Max();
             Console.WriteLine($"print the longest song duration of the album that has least songs:" +
@@ -156,16 +156,24 @@ namespace LINQ.Homework
             Console.WriteLine("============================== DO Tuka znam ==========================");
 
             #region Cant SOLVE THIS !!!
+           
+            // - print the names of the artists(separated with "--"), that have more than one album of PopRock genre
+            
+            //albumsWithMoreThanOnePopRockSong.ForEach(x => Console.WriteLine($"{x.Name} and the arthist id is : {x.ArtistId}"));
+            //var groupedAlbumsByGenre = albumsWithMoreThanOnePopRockSong.OrderBy(y => y.ArtistId).GroupBy(x => x.ArtistId);
+            //List<Album> albumsWithMoreThanOnePopRockSong = Albums.Where(x => x.Genre.ToString().ToLower() == "poprock").ToList();
+            List<string> artistWithMoreThanOnePopRockAlbum = Artists.Where(artist => artist.Albums
+                                                        .Any(albums => albums.Genre == Genre.PopRock))
+                                                        .Where(x => x.Albums.Count() > 1)
+                                                        .Select(name => name.FullName).ToList();
+            Console.WriteLine("print the names of the artists(separated with \"--\"), that have more than one album of PopRock genre");
+            artistWithMoreThanOnePopRockAlbum.ForEach(item => Console.Write($"{item} --"));
+            Console.WriteLine("");
+
+
+
 
             /*
-            // - print the names of the artists(separated with "--"), that have more than one album of PopRock genre
-            List<Album> albumsWithMoreThanOnePopRockSong = Albums.Where(x => x.Genre.ToString().ToLower() == "poprock").ToList();
-            albumsWithMoreThanOnePopRockSong.ForEach(x => Console.WriteLine($"{x.Name} and the arthist id is : {x.ArtistId}"));
-            var groupedAlbumsByGenre = albumsWithMoreThanOnePopRockSong.OrderBy(y => y.ArtistId).GroupBy(x => x.ArtistId);
-
-            
-
-
             // - print the name of the album that has highest Average duration of a song
             var songsGroupedByAlbumId = Songs.GroupBy(x => x.AlbumId);
             Dictionary<int, double> albumsByIdWithAverageDuration = new Dictionary<int, double>();
@@ -184,10 +192,35 @@ namespace LINQ.Homework
             {
                 Console.WriteLine($"{item.Key} and the value is {item.Value}");
             }
+            */
+            // - print the name of the album that has highest Average duration of a song
+            //double avgDuration = Songs.Select(song => song.Duration).Average();//vaka se bara average duration
+            Dictionary<string, double> albumsBySongAverageDuration = new Dictionary<string, double>();
+            foreach(var item in Albums)
+            {
+                albumsBySongAverageDuration.Add(item.Name, item.Songs.Select(song => song.Duration).Average());
+            }
+            var dictionaryByDescendingOrder = albumsBySongAverageDuration.OrderByDescending(x => x.Value).ToList();
+            //foreach(var item in dictionaryByDescendingOrder)
+            //{
+            //    Console.WriteLine($"{item.Key} and the value is: {item.Value}");
+            //}
+            Console.WriteLine("print the name of the album that has highest Average duration of a song :");
+            Console.WriteLine($"{dictionaryByDescendingOrder[1]}"); // index starts at 1. ( index 0 is default for get set
+
+            Console.WriteLine("=====================================================");
+
+            // how to map
+            //List<Album> smt1 = Albums.Select(x => new Album
+            //{
+            //    Genre = x.Genre,
+            //    Year = x.Year
+            //}).ToList();
+            //smt1.ForEach(x => Console.WriteLine($"name {x.Name} / artist id: {x.ArtistId} / genre: {x.Genre} / " +
+            //    $" album id: {x.Id} / year: {x.Year} / number of songs: null"));
 
 
-
-
+            /*
             // - print the name of the artist that has most songs
             var groupAlbumsByArtistId = Albums.GroupBy(x => x.ArtistId).ToList();
             Dictionary<int, List<Album>> groupAlbumsByArtistIdDictionary = new Dictionary<int, List<Album>>();
@@ -203,10 +236,41 @@ namespace LINQ.Homework
 
             }
             Console.WriteLine(groupAlbumsByArtistIdDictionary[1]);
+            */
+            Console.WriteLine("");
+            Console.WriteLine("*************************************************************");
+            List<char> allSongs = Songs.SelectMany(x => x.Name).ToList();
+            //var albumsAndSongs = Albums.SelectMany(album => album.Songs,(album, songs) => new 
+            //{
+            //    AlbumName = album.Name,
+            //    Song = songs.Name
+
+            //}).ToList();
+
+            var result1123 =
+                Artists.SelectMany(artist => artist.Albums, (listOfArtists, listOFAlbumsInside) => new
+                {
+                    ArtistName = listOfArtists.FullName,
+                    AlbumsWithCountOfSongs = listOFAlbumsInside.Songs.Count()
+                })
+                .GroupBy(x => x.ArtistName);
+
+            Dictionary<string, int> lalala = new Dictionary<string, int>();
+            foreach (var item in result1123)
+            {
+                lalala.Add(item.Key, item.Select(x => x.AlbumsWithCountOfSongs).Sum());
+            }
+            var finalResult = lalala.OrderByDescending(x => x.Value).ToList();
+            Console.WriteLine($"{finalResult[0].Key} and has songs {finalResult[0].Value}");
+
+            
+            foreach (var item in lalala)
+            {
+                Console.WriteLine($"{item.Key} and the album count of songs {item.Value}");
+            }
 
 
-
-
+            /*
             // - print the type of the artist(SoloArtist/Band) that has most albums published before year 2000
             List<Album> albumsPublishedBefore2000 = Albums.Where(x => x.Year < 2000).ToList();
             var groupByArtistID = Albums.Where(album => album.Year < 2000).GroupBy(x => x.ArtistId).ToList();

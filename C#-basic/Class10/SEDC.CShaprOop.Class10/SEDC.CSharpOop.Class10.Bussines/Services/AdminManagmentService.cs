@@ -244,7 +244,7 @@ namespace SEDC.CSharpOop.Class10.Bussines.Services
         }
         public void CheckEmptyInput(string input)
         {
-            if (input == string.Empty) //Length < 1 || input == ""
+            if (input.Trim() == string.Empty) //Length < 1 || input == "" input == string.Empty
             {
                 throw new Exception("The input is not valid");
             }
