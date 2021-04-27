@@ -9,9 +9,9 @@ namespace Homework02.Domain.Models
     public abstract class User : IUser
     {
        
-        public abstract string UserName { get ; set ; }
-        public abstract UserRole Role { get; set ; }
-        public abstract List<string> Comments { get; set; }
+        public string UserName { get ; set ; }
+        public UserRole Role { get; set ; }
+        public List<string> Comments { get; set; }
 
         public User(string userName)
         {
@@ -20,7 +20,6 @@ namespace Homework02.Domain.Models
         }
         public abstract void PostComment(string comment);
         
-
         public abstract void PrintUser();      
         
     }

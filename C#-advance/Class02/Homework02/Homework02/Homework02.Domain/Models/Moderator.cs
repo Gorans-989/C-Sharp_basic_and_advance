@@ -8,17 +8,14 @@ namespace Homework02.Domain.Models
 {
     public class Moderator : User, IModerator
     {       
-        public override string UserName { get; set; }
-        public override UserRole Role { get; set; }
-        public override List<string> Comments { get; set; }
         public List<User> Users { get; set; }
 
         public Moderator (string userName) : base(userName)
         {
             UserName = userName;
-            Role = UserRole.Moderator; // default for role moderator
-            Comments = new List<string>();
-            /*Users = new List<User>(); */// instanced by default
+            Role = UserRole.Moderator; // default for role moderator is this ok?
+            //Comments = new List<string>();
+            /*Users = new List<User>(); */// instanced in database
         }
 
 

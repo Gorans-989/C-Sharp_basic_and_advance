@@ -8,9 +8,6 @@ namespace Homework02.Domain.Models
 {
     public class Guest : User, IGuest
     {
-        public override string UserName { get; set; }
-        public override UserRole Role { get; set; }
-        public override List<string> Comments { get; set; }
         public int Id { get; set; }
 
         public Guest(string userName, int id) : base(userName)
@@ -18,7 +15,7 @@ namespace Homework02.Domain.Models
             UserName = userName;
             Id = id;
             Role = UserRole.Guest;
-            Comments = new List<string>();
+            //Comments = new List<string>();
         }
 
         public override void PostComment(string comment)

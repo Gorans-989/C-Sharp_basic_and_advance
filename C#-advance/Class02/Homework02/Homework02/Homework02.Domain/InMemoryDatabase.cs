@@ -20,8 +20,6 @@ namespace Homework02.Domain
             FillUsers();
             FillModeratorsWithUsers();
 
-
-            //asignSubjectsToStudents();
         }
 
         private static void GenerateGuests() { 
@@ -53,7 +51,7 @@ namespace Homework02.Domain
                 new Poster("Jana", 238),
                 new Poster("Pero", 178),
                 new Poster("Jane", 332),
-                new Poster("Tarzan", 150)
+                new Poster("Tarzan", 450)
             };
         }
 

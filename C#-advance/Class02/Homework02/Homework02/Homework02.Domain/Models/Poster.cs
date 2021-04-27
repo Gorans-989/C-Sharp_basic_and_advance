@@ -8,9 +8,6 @@ namespace Homework02.Domain.Models
 {
     public class Poster : User, IPoster
     {
-        public override string UserName { get; set; }
-        public override UserRole Role { get; set; }
-        public override List<string> Comments { get; set; }
         public int Points { get; set; }
         public bool IsPosterOfTheWeek { get; set; }
 
@@ -19,7 +16,7 @@ namespace Homework02.Domain.Models
             UserName = userName;
             Points = points;
             Role = UserRole.Poster;
-            Comments = new List<string>();
+            //Comments = new List<string>();
         }
 
         
