@@ -13,12 +13,21 @@ namespace Homework02.Domain.Models
         public UserRole Role { get; set ; }
         public List<string> Comments { get; set; }
 
+        public User()
+        {
+
+        }
         public User(string userName)
         {
             UserName = userName;
             Comments = new List<string>();
         }
-        public abstract void PostComment(string comment);
+        public virtual void PostComment(string comment)
+        {
+            Comments.Add(comment);
+        }
+        //public abstract void PostComment(); prvo ja napraviv abstract pa smeniv
+       
         
         public abstract void PrintUser();      
         

@@ -21,14 +21,18 @@ namespace Homework02.Domain.Models
 
         public void BanUser(User user, string reason)
         {
-            Console.WriteLine($"The user {user.UserName} is banned for \"{reason.ToUpper()}\"");
+            if(user != null)
+            {
+                Console.WriteLine($"The user {user.UserName} is banned for \"{reason.ToUpper()}\"");
+                InMemoryDatabase.ListOfUsers.Remove(user);
+            }
+            else
+            {
+                Console.WriteLine("Error something happened");
+            }
+            
         }
-
-        public override void PostComment(string comment)
-        {
-            Comments.Add(comment);
-            Console.WriteLine($"You added \"{comment} \" to your list of comments");
-        }
+        
 
         public override void PrintUser()
         {

@@ -32,8 +32,9 @@ namespace Homework02.Domain.Models
 
         public override void PostComment(string comment)
         {
-            Comments.Add(comment);
+            base.PostComment(comment);
             Console.WriteLine($"You added \"{comment} \" to your list of comments");
         }
+        
     }
 }

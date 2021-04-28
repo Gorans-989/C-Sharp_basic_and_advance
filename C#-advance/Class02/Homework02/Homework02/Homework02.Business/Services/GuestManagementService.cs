@@ -1,5 +1,6 @@
 ﻿using Homework02.Domain;
 using Homework02.Domain.Data;
+using Homework02.Domain.Helpers;
 using Homework02.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -14,41 +15,72 @@ namespace Homework02.Business.Services
         {
             UserRepo = new UserRepo();
         }
-        public void GuestMenu(int selection)
+
+        public void GuestMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to guest menu.");
-            // post comment(add)
-            // read comment
-            //print info
 
             while (true)
             {
-                Console.WriteLine("Press 1 to test methods for guest 1");
-                int inputSelection = int.Parse(Console.ReadLine());
-                switch (inputSelection)
+                Console.WriteLine("Please choose one guest by name or press \"x\" to quit");
+                UserRepo.ReturnListOfGuest().ForEach(x => Console.WriteLine(x.UserName));
+
+                string userInput = Console.ReadLine();
+                if(userInput.ToLower() == "x")
                 {
-                    case 1:
-                        //
-                        InMemoryDatabase.Guests[0].ReadComment("pero");
-                        Console.WriteLine(InMemoryDatabase.Guests[0].Comments.Count);
-                        InMemoryDatabase.Guests[0].PrintUser();
-                        InMemoryDatabase.Guests[0].PostComment("corona19");
-                        Console.WriteLine(InMemoryDatabase.Guests[0].Comments.Count); 
-
-
-                        continue;
-                    case 2:
-                        //
-                        Console.WriteLine(InMemoryDatabase.Posters[0].Comments.Count);
-                        InMemoryDatabase.Posters[0].PrintUser();
-                        InMemoryDatabase.Posters[0].PostComment("corona19");
-                        Console.WriteLine(InMemoryDatabase.Posters[0].Comments.Count);
-                        continue;
-                    default:
-                        continue;
+                    Console.WriteLine("Goodbye");
+                    return;
                 }
+
+                //Guest loggedGuest = UserRepo.GetGuestByUserName(Console.ReadLine());
+
+                Guest loggedGuest = UserRepo.GetGuestByUserName(userInput);
+
+                if (loggedGuest != null)
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Choose from 3 options");
+                        Console.WriteLine("1. read Comment");
+                        Console.WriteLine("2. post Comment");
+                        Console.WriteLine("3. Print info about guest");
+                        Console.WriteLine("4. to exit");
+
+                        int selection = InputValidation.ValidateInput(Console.ReadLine());
+
+                        switch (selection)
+                        {
+                            case 1:
+                                Console.WriteLine("Please write the comment to read it");
+                                loggedGuest.ReadComment(Console.ReadLine());
+                                continue;
+                            case 2:
+                                Console.WriteLine("Sorry Guests cant Post Comment. Only Poster do.");
+                                continue;
+                            case 3:
+                                loggedGuest.PrintUser();
+                                continue;
+                            case 4:
+                                Console.WriteLine("Goodbye");
+                                return;
+                            default:
+                                Console.WriteLine("Wrong choice. Valid number are from 1 to 4");
+                                continue;
+                        }  
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No such name in database");
+                }
+                
+                
+                // post comment(add)
+                // read comment
+                //print info
+
             }
         }
-        
     }
 }

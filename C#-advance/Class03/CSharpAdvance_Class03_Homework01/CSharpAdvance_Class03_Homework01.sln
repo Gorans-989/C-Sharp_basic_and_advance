@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class03_Homework01_ConsoleApp", "Class03_Homework01_ConsoleApp\Class03_Homework01_ConsoleApp.csproj", "{D5E1283E-43A8-4877-AE23-F3EB78D15FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class03_Homework01_Domain", "Class03_Homework01_Domain\Class03_Homework01_Domain.csproj", "{471AD842-D45D-421A-ADDB-32D6729B1A82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5E1283E-43A8-4877-AE23-F3EB78D15FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E1283E-43A8-4877-AE23-F3EB78D15FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E1283E-43A8-4877-AE23-F3EB78D15FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E1283E-43A8-4877-AE23-F3EB78D15FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471AD842-D45D-421A-ADDB-32D6729B1A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471AD842-D45D-421A-ADDB-32D6729B1A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471AD842-D45D-421A-ADDB-32D6729B1A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471AD842-D45D-421A-ADDB-32D6729B1A82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB3BF705-9021-44D2-B927-FC06BEBF6AE0}
+	EndGlobalSection
+EndGlobal

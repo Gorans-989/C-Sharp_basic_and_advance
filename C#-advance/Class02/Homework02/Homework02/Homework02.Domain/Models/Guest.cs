@@ -10,6 +10,10 @@ namespace Homework02.Domain.Models
     {
         public int Id { get; set; }
 
+        public Guest()
+        {
+
+        }
         public Guest(string userName, int id) : base(userName)
         {
             UserName = userName;
@@ -18,10 +22,10 @@ namespace Homework02.Domain.Models
             //Comments = new List<string>();
         }
 
-        public override void PostComment(string comment)
-        {
-            Console.WriteLine("Sorry, Guest users cant post comments");
-        }
+        //public override void PostComment(string comment)
+        //{
+        //    Console.WriteLine("Sorry, Guest users cant post comments");
+        //}
 
         public override void PrintUser()
         {
