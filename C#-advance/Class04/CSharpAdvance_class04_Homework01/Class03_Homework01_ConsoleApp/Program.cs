@@ -9,7 +9,7 @@ namespace Class03_Homework01_ConsoleApp
         public static PetStore<Dog> DogStore = new PetStore<Dog>();
         public static PetStore<Cat> CatStore = new PetStore<Cat>();
         public static PetStore<Fish> FishStore = new PetStore<Fish>();
-        public static PetStore<Pet> genericPetStore = new PetStore<Pet>();
+        //public static PetStore<Pet> genericPetStore = new PetStore<Pet>();
 
         static void Main(string[] args)
         {
@@ -31,9 +31,11 @@ namespace Class03_Homework01_ConsoleApp
             //genericPetStore.PrintPets(DogStore.Pets);
             //genericPetStore.PrintPets(CatStore.Pets);
             //genericPetStore.PrintPets(FishStore.Pets);
-            DogStore.PrintPets(CatStore.Pets);
-            CatStore.PrintPets(FishStore.Pets);
-            FishStore.PrintPets(DogStore.Pets);
+            
+            DogStore.PrintPets(DogStore.Pets);
+            CatStore.PrintPets(CatStore.Pets);
+            FishStore.PrintPets(FishStore.Pets);
+
             Console.WriteLine("==================================");
 
             Console.WriteLine("please type in the name of the dog you want to buy");
@@ -43,10 +45,12 @@ namespace Class03_Homework01_ConsoleApp
             Console.WriteLine("please type in the name of the fish you want to buy");
             Console.WriteLine(FishStore.BuyPet(Console.ReadLine()));
             Console.WriteLine("pets in store after bying");
-            DogStore.PrintPets(CatStore.Pets);
-            CatStore.PrintPets(FishStore.Pets);
-            FishStore.PrintPets(DogStore.Pets);
 
+            //FishStore.PrintPets_01(DogStore.Pets);
+            //DogStore.PrintPets_01(CatStore.Pets);
+            //CatStore.PrintPets_01(FishStore.Pets);
+
+            
 
 
             Console.ReadLine();

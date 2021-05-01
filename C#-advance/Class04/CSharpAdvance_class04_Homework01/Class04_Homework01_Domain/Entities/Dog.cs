@@ -7,7 +7,7 @@ using System.Text;
 namespace Class04_Homework01_Domain.Entities
 {
     public class Dog : Pet
-    { /*▹Dog(from Pet) with GoodBoiand FavoriteFood*/
+    { /*▹Dog(from Pet) with GoodBoi and FavoriteFood*/
 
         public string FavoriteFood { get; set; }
 

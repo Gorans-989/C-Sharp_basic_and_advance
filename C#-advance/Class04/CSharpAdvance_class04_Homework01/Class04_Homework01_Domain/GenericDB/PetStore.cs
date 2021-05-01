@@ -15,10 +15,11 @@ namespace Class04_Homework01_Domain.GenericDB
             Pets = new List<T>();
         }
         
-        public void PrintPets<T>(List<T> somePet)
-            where T : Pet
+        public void PrintPets(List<T> somePet)
+            //public void PrintPets<T>(List<T> somePet) ako ja 
+            //where T : Pet
         {
-            if(somePet != null)
+            if (somePet != null)
             {
                 foreach(T item in somePet)
                 {
