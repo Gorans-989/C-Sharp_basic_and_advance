@@ -13,9 +13,6 @@ namespace QuizConsoleApp
             Console.WriteLine("Welcome to Who wants to be a Millionaire");
             quiz.StartGame();
 
-
-
-
             Console.ReadLine();
         }
     }

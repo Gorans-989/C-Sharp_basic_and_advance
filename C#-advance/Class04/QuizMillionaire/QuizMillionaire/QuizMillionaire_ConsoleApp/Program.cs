@@ -12,6 +12,7 @@ namespace QuizMillionaire_ConsoleApp
 
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("Welcome to Who Wants To Be a MILLIONAIRE \n Press any key to start");
             Console.ReadKey();
 
@@ -65,27 +66,27 @@ namespace QuizMillionaire_ConsoleApp
                 }
             }
             
-
+            */
             Console.ReadLine();
         }
 
-        public static bool CheckAnswer(Dictionary<string,int> questionsAndAnswers,string question, int userAnswer)
-        {
-            if (questionsAndAnswers.TryGetValue(question, out int answerValue))
-            {
-                if(answerValue == userAnswer)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public static bool CheckAnswer(Dictionary<string,int> questionsAndAnswers,string question, int userAnswer)
+        //{
+        //    if (questionsAndAnswers.TryGetValue(question, out int answerValue))
+        //    {
+        //        if(answerValue == userAnswer)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
